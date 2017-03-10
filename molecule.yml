@@ -6,9 +6,13 @@ driver:
 docker:
   containers:
     - name: ansible-ansible
-      image: ubuntu
-      image_version: latest
+      image: centos
+      image_version: centos7.3.1611
       ansible_groups:
         - group1
 verifier:
   name: testinfra
+
+molecule:
+  ignore_paths:
+    - venv
