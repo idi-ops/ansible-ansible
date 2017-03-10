@@ -16,3 +16,8 @@ def test_yum_packages_not_installed(Package):
 def test_pip_installed(Package):
     pip_pkg = Package("python2-pip")
     assert pip_pkg.is_installed
+
+
+def test_pip_list_shows_jinja(Command):
+    cmd = Command("pip list")
+    assert "Jinja2" in cmd.stdout
