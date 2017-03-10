@@ -1,2 +1,2 @@
 ---
-# tasks file for ansible-ansible
+- { include: install.yml, tags: ["install"] }

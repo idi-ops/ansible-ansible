@@ -1,2 +1,4 @@
 ---
-# defaults file for ansible-ansible
+ansible_pip_package_version: 8.1.2
+ansible_pip_packages:
+  - "python2-pip-{{ ansible_pip_package_version }}"

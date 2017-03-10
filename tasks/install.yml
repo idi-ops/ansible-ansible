@@ -1,0 +1,28 @@
+---
+- name: Add EPEL repository
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://mirror.csclub.uwaterloo.ca/fedora/epel/$releasever/$basearch/
+    gpgcheck: yes
+    gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
+
+- name: Import RPM key
+  rpm_key:
+    key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
+    state: present
+
+- name: Uninstall Yum Ansible packages
+  package:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - "ansible"
+    - "python-jinja2"
+
+- name: Install Yum Pip package
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ ansible_pip_packages }}"
