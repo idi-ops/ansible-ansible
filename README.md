@@ -11,7 +11,6 @@ Requirements
 
 Role Variables
 --------------
-
 Name of ansible package in pip
 
     ansible_pip_ansible_package_name: ansible
