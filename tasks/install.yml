@@ -6,7 +6,7 @@
   tags:
     - skip_ansible_lint
 
-- name: Uninstall Yum Ansible packages
+- name: Uninstall Ansible packages with Yum
   package:
     name: "{{ item }}"
     state: absent
@@ -14,14 +14,15 @@
     - "ansible"
     - "python-jinja2"
 
-- name: Install Pip package from Yum
+- name: Install Pip packages from Yum
   package:
     name: "{{ item }}"
     state: present
   with_items:
     - "{{ ansible_yum_pip_packages }}"
 
-- name: Install Ansible package from Pip
+- name: Install Ansible packages from Pip
   pip:
-    name: "{{ ansible_pip_ansible_package_name }}"
-    version: "{{ ansible_pip_ansible_package_version }}"
+    name: "{{ item }}"
+  with_items:
+    - "{{ ansible_pip_ansible_packages }}"

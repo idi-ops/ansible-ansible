@@ -1,0 +1,7 @@
+---
+- name: Enable and (re)start redis service
+  service:
+    name: redis
+    enabled: yes
+    state: started
+    use: systemd

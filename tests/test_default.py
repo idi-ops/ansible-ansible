@@ -21,3 +21,15 @@ def test_pip_installed(Package):
 def test_pip_list_shows_jinja(Command):
     cmd = Command("pip list")
     assert "Jinja2" in cmd.stdout
+
+
+def test_ansible_service_enabled(Service):
+    svc = Service("redis")
+    assert svc.is_enabled
+
+
+def test_ansible_with_redis_caching_runs(Command):
+    write_ansible_cfg = Command("echo -e '[defaults]\nfact_caching = redis' > /tmp/ansible_with_fact_caching.cfg")
+    assert write_ansible_cfg.rc == 0
+    run_ansible = Command("ANSIBLE_CONFIG=/tmp/ansible_with_fact_caching.cfg ansible localhost -a 'true'")
+    assert run_ansible.rc == 0
