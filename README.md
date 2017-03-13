@@ -43,6 +43,8 @@ Tests
 
 Use [molecule](https://github.com/metacloud/molecule) to test this role.
 
+Because this role depends on systemd and might one day need SELinux (as related role ansible-influxdb does), only a Vagrant provider is configured at the moment.
+
 License
 -------
 
