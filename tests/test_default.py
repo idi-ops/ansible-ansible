@@ -33,3 +33,13 @@ def test_ansible_with_redis_caching_runs(Command):
     assert write_ansible_cfg.rc == 0
     run_ansible = Command("ANSIBLE_CONFIG=/tmp/ansible_with_fact_caching.cfg ansible localhost -a 'true'")
     assert run_ansible.rc == 0
+
+
+def test_ansible_with_route53_runs(Command):
+    cmd = Command("ansible localhost -m route53 -a 'zone=example.com command=get type=A record='")
+    assert "boto required for this module" not in cmd.stdout
+    # I don't want to bother with a one-off set of powerless credentials for
+    # this test. I also don't want to really talk to AWS every time this test
+    # runs. If we get as far as importing boto and trying to authenticate,
+    # that's pretty good for an integration test.
+    assert "boto.exception.NoAuthHandlerFound" in cmd.stdout

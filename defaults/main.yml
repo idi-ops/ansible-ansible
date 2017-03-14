@@ -1,6 +1,7 @@
 ---
 ansible_pip_ansible_packages:
   - ansible==2.2.1.0
+  - boto==2.46.1
   - redis==2.10.5
 
 ansible_yum_pip_package_version: 8.1.2
