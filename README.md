@@ -1,23 +1,27 @@
 Role Name
 =========
 
-Minimal Ansible role to manage Ansible (and Jinja) with Pip on CentOS 7.3.
+Minimal Ansible role to manage Ansible (and Jinja) with Pip on CentOS 7.3. This includes:
+
+  * redis, the datastore, from yum installed, enabled, and started
+  * redis, the python library, from pip
+  * boto, the python library, for AWS (Route53) plays
 
 Requirements
 ------------
 
  * CentOS 7.x
  * Ansible 2.x
+ * systemd
 
 Role Variables
 --------------
-Name of ansible package in pip
+Pip packages (and version numbers) to provide all the ansible functionality we need
 
-    ansible_pip_ansible_package_name: ansible
-
-Version of ansible package to install from pip
-
-    ansible_pip_ansible_package_version: 2.2.1.0
+ansible_pip_ansible_packages:
+  - ansible==2.2.1.0
+  - boto==2.46.1
+  - redis==2.10.5
 
 Version of pip package to install from yum
 
@@ -27,6 +31,7 @@ Pip package (and supporting packages) to install from yum
 
     ansible_yum_pip_packages:
       - "python2-pip-{{ ansible_yum_pip_package_version }}"
+      - redis-2.8.19  # For fact caching
       - gcc-4.8.5  # Needed for 'pip install cryptography'
       - python-devel-2.7.5  # Needed for 'pip install cryptography'
       - openssl-devel-1.0.1e-60.el7_3.1  # Needed for 'pip install cryptography'
