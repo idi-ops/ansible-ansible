@@ -18,9 +18,9 @@ def test_pip_installed(Package):
     assert pip_pkg.is_installed
 
 
-def test_pip_list_shows_jinja(Command):
-    cmd = Command("pip list")
-    assert "Jinja2" in cmd.stdout
+def test_pip_list_shows_jinja(PipPackage):
+    packages = PipPackage.get_packages()
+    assert "Jinja2" in packages.keys()
 
 
 def test_ansible_service_enabled(Service):
