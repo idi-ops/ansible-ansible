@@ -1,0 +1,28 @@
+---
+- name: Add EPEL repository
+  package:
+    name: epel-release
+    state: latest
+  tags:
+    - skip_ansible_lint
+
+- name: Uninstall Ansible packages with Yum
+  package:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - "ansible"
+    - "python-jinja2"
+
+- name: Install Pip packages from Yum
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ ansible_rpm_packages }}"
+
+- name: Install Ansible packages from Pip
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - "{{ ansible_pip_packages }}"
