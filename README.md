@@ -21,6 +21,7 @@ Pip packages (and version numbers) to provide all the ansible functionality we n
 ansible_pip_ansible_packages:
   - ansible==2.2.1.0
   - boto==2.46.1
+  - dnspython==1.15.0  # For ansible "lookup('dig', ...)"
   - redis==2.10.5
 
 Version of pip package to install from yum
