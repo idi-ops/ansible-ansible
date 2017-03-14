@@ -19,10 +19,10 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - "{{ ansible_yum_pip_packages }}"
+    - "{{ ansible_rpm_packages }}"
 
 - name: Install Ansible packages from Pip
   pip:
     name: "{{ item }}"
   with_items:
-    - "{{ ansible_pip_ansible_packages }}"
+    - "{{ ansible_pip_packages }}"

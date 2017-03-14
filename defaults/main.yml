@@ -1,13 +1,12 @@
 ---
-ansible_pip_ansible_packages:
+ansible_pip_packages:
   - ansible==2.2.1.0
   - boto==2.46.1
   - dnspython==1.15.0  # For ansible "lookup('dig', ...)"
   - redis==2.10.5
 
-ansible_yum_pip_package_version: 8.1.2
-ansible_yum_pip_packages:
-  - "python2-pip-{{ ansible_yum_pip_package_version }}"
+ansible_rpm_packages:
+  - python2-pip-8.1.2
   - redis-3.2.3  # For fact caching
   - gcc-4.8.5  # Needed for 'pip install cryptography'
   - python-devel-2.7.5  # Needed for 'pip install cryptography'
