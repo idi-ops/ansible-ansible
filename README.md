@@ -1,5 +1,5 @@
-Role Name
-=========
+Ansible role: ansible
+=====================
 
 Minimal Ansible role to manage Ansible (and Jinja) with Pip on CentOS 7.3. This includes:
 
@@ -18,11 +18,11 @@ Role Variables
 --------------
 Pip packages (and version numbers) to provide all the ansible functionality we need
 
-ansible_pip_packages:
-  - ansible==2.2.1.0
-  - boto==2.46.1
-  - dnspython==1.15.0  # For ansible "lookup('dig', ...)"
-  - redis==2.10.5
+    ansible_pip_packages:
+      - ansible==2.2.1.0
+      - boto==2.46.1
+      - dnspython==1.15.0  # For ansible "lookup('dig', ...)"
+      - redis==2.10.5
 
 Pip package (and supporting packages) to install from yum
 
