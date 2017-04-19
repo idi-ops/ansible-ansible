@@ -17,9 +17,11 @@
 - name: Install Pip packages from Yum
   package:
     name: "{{ item }}"
-    state: present
+    state: latest
   with_items:
     - "{{ ansible_rpm_packages }}"
+  tags:
+    - skip_ansible_lint
 
 - name: Install Ansible packages from Pip
   pip:

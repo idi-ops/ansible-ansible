@@ -19,19 +19,19 @@ Role Variables
 Pip packages (and version numbers) to provide all the ansible functionality we need
 
     ansible_pip_packages:
-      - ansible==2.2.1.0
-      - boto==2.46.1
-      - dnspython==1.15.0  # For ansible "lookup('dig', ...)"
-      - redis==2.10.5
+      - ansible
+      - boto
+      - dnspython  # For ansible "lookup('dig', ...)"
+      - redis
 
 Pip package (and supporting packages) to install from yum
 
     ansible_rpm_packages:
-      - python2-pip-8.1.2
-      - redis-3.2.3  # For fact caching
-      - gcc-4.8.5  # Needed for 'pip install cryptography'
-      - python-devel-2.7.5  # Needed for 'pip install cryptography'
-      - openssl-devel-1.0.1e-60.el7_3.1  # Needed for 'pip install cryptography'
+      - python2-pip
+      - redis  # For fact caching
+      - gcc  # Needed for 'pip install cryptography'
+      - python-devel  # Needed for 'pip install cryptography'
+      - openssl-devel  # Needed for 'pip install cryptography'
 
 Example Playbook
 ----------------
